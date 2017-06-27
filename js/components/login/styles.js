@@ -14,25 +14,41 @@ export default {
     right: 0,
     backgroundColor: '#FBFAFA',
   },
-  shadow: {
-    flex: 1,
-    width: null,
-    height: null,
+  logo1: {
+    // flex: 1,
+    marginTop: deviceHeight / 6,
+    marginLeft: 130,
+    // paddingTop: 20,
+    paddingBottom: 0,
+    marginBottom: 0,
+    width: 120,
+    resizeMode: 'contain',
+    height: 100,
+  },
+logo2: {
+    marginLeft: 80,
+    width: 250,
+    height: 60,
+    resizeMode: 'contain'
   },
   bg: {
-    flex: 1,
-    marginTop: deviceHeight / 1.75,
+    // flex: 1,
+    // marginTop: deviceHeight / 1.75,
     paddingTop: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
     paddingBottom: 30,
     bottom: 0,
+  },
+  textCenter:{
+    color: '#808080',
+    textAlign: 'center',
   },
   input: {
     marginBottom: 20,
   },
   btn: {
     marginTop: 20,
-    alignSelf: 'center',
+    backgroundColor: '#0d2340'
   },
 };
