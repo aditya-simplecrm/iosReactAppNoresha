@@ -15,7 +15,8 @@ import Leads from './components/leads';
 import Calls from './components/calls';
 import Meetings from './components/meetings';
 import Tasks from './components/tasks';
-import View2 from './components/leads/View2.js';
+import LeadsDetailView from './components/leads/detailView.js';
+import LeadsEditView from './components/leads/editView.js';
 import { statusBarColor } from './themes/base-theme';
 
 
@@ -60,14 +61,16 @@ class AppNavigator extends Component {
         return <BlankPage />;
       case 'leads':
         return <Leads />;
-      case 'view2':
-        return <View2 />;
       case 'callsedit':
         return <Calls />;
       case 'meetingsedit':
         return <Meetings />;
       case 'tasksedit':
         return <Tasks />;
+        case 'leadsDetailView':
+        return <LeadsDetailView />;
+      case 'leadsEditView':
+        return <LeadsEditView />;
       default :
         return <Login />;
     }
@@ -112,10 +115,11 @@ class AppNavigator extends Component {
             <Scene key="home" component={Home} />
             <Scene key="blankPage" component={BlankPage} />
             <Scene key="leads" component={Leads} />
-            <Scene key="view2" component={View2} />
             <Scene key="callsedit" component={Calls} />
             <Scene key="meetingsedit" component={Meetings} />
             <Scene key="tasksedit" component={Tasks} />
+             <Scene key="leadsDetailView" component={LeadsDetailView} />
+            <Scene key="leadsEditView" component={LeadsEditView} />
           </Scene>
         </RouterWithRedux>
       </Drawer>
