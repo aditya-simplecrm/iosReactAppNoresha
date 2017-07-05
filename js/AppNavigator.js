@@ -11,6 +11,11 @@ import Login from './components/login/';
 import Home from './components/home/';
 import BlankPage from './components/blankPage';
 import SideBar from './components/sideBar';
+import Leads from './components/leads';
+import Calls from './components/calls';
+import Meetings from './components/meetings';
+import Tasks from './components/tasks';
+import View2 from './components/leads/View2.js';
 import { statusBarColor } from './themes/base-theme';
 
 
@@ -37,7 +42,7 @@ class AppNavigator extends Component {
 
   openDrawer() {
     this._drawer._root.open();
-  }
+  }   
 
   closeDrawer() {
     if (this.props.drawerState === 'opened') {
@@ -53,6 +58,16 @@ class AppNavigator extends Component {
         return <Home />;
       case 'blankPage':
         return <BlankPage />;
+      case 'leads':
+        return <Leads />;
+      case 'view2':
+        return <View2 />;
+      case 'callsedit':
+        return <Calls />;
+      case 'meetingsedit':
+        return <Meetings />;
+      case 'tasksedit':
+        return <Tasks />;
       default :
         return <Login />;
     }
@@ -96,6 +111,11 @@ class AppNavigator extends Component {
             <Scene key="login" component={Login} hideNavBar initial />
             <Scene key="home" component={Home} />
             <Scene key="blankPage" component={BlankPage} />
+            <Scene key="leads" component={Leads} />
+            <Scene key="view2" component={View2} />
+            <Scene key="callsedit" component={Calls} />
+            <Scene key="meetingsedit" component={Meetings} />
+            <Scene key="tasksedit" component={Tasks} />
           </Scene>
         </RouterWithRedux>
       </Drawer>

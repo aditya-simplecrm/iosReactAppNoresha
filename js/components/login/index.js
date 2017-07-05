@@ -77,12 +77,12 @@ class Login extends Component {
                     this.setState({ message: response.message });  
                   }
                  
-                // else this.setState({ message: response.message });
+                
                 
             })
             .then(() => {
                 this.setState({ isLoggingIn: false })
-                // if (proceed) this.props.onLoginPress();
+              
             })
             .catch(err => {
               this.setState({ message: err.message });
@@ -91,12 +91,12 @@ class Login extends Component {
     }
 
     clearUsername = () => {
-        this._username.setNativeProps({ text: '' });
+
         this.setState({ message: '' });
     }
 
     clearPassword = () => {
-        this._password.setNativeProps({ text: '' });
+
         this.setState({ message: '' });
     }
 
@@ -148,7 +148,7 @@ class Login extends Component {
                   <Text>Login</Text>
                 </Button>
                 <Content style={styles.bg}>
-                  <Text style={styles.textCenter}>Forget Password?</Text>
+                  <Text style={styles.textCenter}>Forgot Password?</Text>
                 </Content>
                 <Content style={styles.bg}>
                   <Text style={styles.textCenter}>www.simplecrm.com.sg</Text>
@@ -165,7 +165,7 @@ class Login extends Component {
 
 function bindActions(dispatch) {
   return {
-    setUser: name => dispatch(setUser(username)),
+    setUser: username => dispatch(setUser(username)),
   };
 }
 
