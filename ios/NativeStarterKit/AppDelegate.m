@@ -37,6 +37,11 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+  // How long do we wait before showing that loading view
+  rootView.loadingViewFadeDelay = 0.50;
+  // How long should the fade animation for the view last
+  rootView.loadingViewFadeDuration = 0.50;
   return YES;
 }
 
