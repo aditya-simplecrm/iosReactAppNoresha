@@ -64,7 +64,7 @@ var CANCEL_INDEX_CUSTOMER = 2;
   
 const placeholder = require('../../../images/placeholder.png');
 
-class LeadsEditView extends Component {
+class LeadsInlineedit extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
@@ -72,12 +72,15 @@ class LeadsEditView extends Component {
     list: React.PropTypes.arrayOf(React.PropTypes.string),
     openDrawer: React.PropTypes.func,
   };
+
   constructor(props) {
     super(props);
+    var data = realm.objects('leads').filtered('id = $0',this.props.id);
+
     this.state = {
         title: 'Create Lead',
         right: 'createLead',
-        first_name: '',
+        first_name: 'checking',
         last_name: '',
         messsage: '',
         first_name_error: false,
@@ -283,7 +286,7 @@ class LeadsEditView extends Component {
   }
 
   render() {
- 
+
     return (
       <Container style={styles.container}>
         <Header>
@@ -318,7 +321,7 @@ class LeadsEditView extends Component {
                   <View style={{width: 800}}>
                       <Item floatingLabel>
                         <Label>First Name*</Label>
-                        <Input 
+                        <Input placeholder = "noresha"
                             onChangeText={(first_name) => this.setState({first_name})}
                             
                         />
@@ -453,4 +456,4 @@ const mapStateToProps = state => ({
   // title: this.state.title
 });
 
-export default connect(mapStateToProps, bindAction)(LeadsEditView);
+export default connect(mapStateToProps, bindAction)(LeadsInlineedit);

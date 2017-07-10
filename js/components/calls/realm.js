@@ -20,37 +20,9 @@
 
 import Realm from 'realm';
 
-class Leads extends Realm.Object {}
-Leads.schema = {
-    name: 'leads',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        deleted: {type: 'bool', default: false},
-        first_name: 'string',
-        last_name: 'string',
-        title: 'string',
-        details: 'string',
-        street: 'string',
-        city: 'string',
-        state: 'string',
-        postal_code: 'string',
-        country: 'string',
-        contact_number: 'string',
-        email: 'string',
-        status: 'string',
-        category: 'string',
-        enquiry_source: 'string',
-        customer_type: 'string',
-        office_contact_number: 'string',
-        company_name: 'string',
-        creationDate: 'date'
-
-    },
-};
 class Calls extends Realm.Object {}
 Calls.schema = {
-  name: 'calls',
+    name: 'calls',
     primaryKey: 'id',
     properties: {
         id: 'int',
@@ -65,4 +37,4 @@ Calls.schema = {
     },
 };
 
-export default new Realm({schema: [Leads,Calls]});
+export default new Realm({schema: [Calls]});

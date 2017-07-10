@@ -11,12 +11,12 @@ import styles from './styles';
 import AppHeader from '../appHeader';
 import ActionButton from 'react-native-action-button';
 import Panel from 'react-native-panel';
-import realm from './realm';
+
 const placeholder = require('../../../images/placeholder.png');
 const call = require('../../../images/call.png');
 const meeting = require('../../../images/meeting.png');
 const task = require('../../../images/task.png');
-class LeadsDetailView extends Component {
+class CallsDetailView extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
@@ -41,8 +41,7 @@ class LeadsDetailView extends Component {
 
 
   render() {
-    // const realm = new Realm({schema: [Leads]});
-    var data = realm.objects('leads').filtered('id = $0',this.props.id);
+   
     return (
       <Container style={styles.container}>
         <Header>
@@ -66,11 +65,12 @@ class LeadsDetailView extends Component {
               
               <View style={{flex: 1, flexDirection: 'row'}}>
                       <View style={{width: 100}}><Thumbnail large source={placeholder} /></View>
-                      <View style={{width: 200}}><Text>{data[0].first_name} {data[0].last_name}</Text><Text>{data[0].title}</Text></View>
-                      <View style={{width: 100}}><Button onPress={()=>Actions.leadsEditView({id:this.props.id})}><Text>Edit</Text></Button></View>
-                                          
-              </View> 
-
+                      <View style={{width: 800}}><Text>{data[0].first_name} {data[0].last_name}</Text>
+                      <View style={{width: 100}}><Label style={{fontSize:15,color:'grey',padding:10,backgroundColor:'#fafafa'}}>Title</Label></View>
+                      <View style={{width: 100}}><Text style={{fontSize:12.5,paddingTop:0,paddingLeft:10,paddingBottom:10,backgroundColor:'#fafafa'}}>{data[0].title}</Text></View>
+                      </View>
+                      
+              </View>         
               
               <Header hasTabs style={styles.header1}/>
               <Tabs initialPage={0}>
@@ -160,4 +160,4 @@ const mapStateToProps = state => ({
   // title: this.state.title
 });
 
-export default connect(mapStateToProps, bindAction)(LeadsDetailView);
+export default connect(mapStateToProps, bindAction)(CallsDetailView);
