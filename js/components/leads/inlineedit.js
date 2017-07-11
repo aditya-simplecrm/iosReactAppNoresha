@@ -319,7 +319,7 @@ class LeadsInlineedit extends Component {
                       </TouchableOpacity>            
                   </View>
                   <View style={{width: 800}}>
-                      <Item floatingLabel>
+                      <Item stackedLabel>
                         <Label>First Name*</Label>
                         <Input placeholder = "noresha"
                             onChangeText={(first_name) => this.setState({first_name})}

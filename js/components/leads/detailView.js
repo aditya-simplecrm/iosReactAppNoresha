@@ -67,7 +67,7 @@ class LeadsDetailView extends Component {
               <View style={{flex: 1, flexDirection: 'row'}}>
                       <View style={{width: 100}}><Thumbnail large source={placeholder} /></View>
                       <View style={{width: 200}}><Text>{data[0].first_name} {data[0].last_name}</Text><Text>{data[0].title}</Text></View>
-                      <View style={{width: 100}}><Button onPress={()=>Actions.leadsEditView({id:this.props.id})}><Text>Edit</Text></Button></View>
+                      <View style={{width: 100}}><Button onPress={()=>Actions.leadsinlinedit({id:this.props.id})}><Text>Edit</Text></Button></View>
                                           
               </View> 
 
