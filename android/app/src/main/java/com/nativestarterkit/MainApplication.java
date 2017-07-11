@@ -3,6 +3,7 @@ package com.nativestarterkit;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.imagepicker.ImagePickerPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import io.realm.react.RealmReactPackage;
 import com.microsoft.codepush.react.CodePush;
@@ -32,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ImagePickerPackage(),
             new SplashScreenReactPackage(),
             new RealmReactPackage(),
             new CodePush(null, getApplicationContext(), BuildConfig.DEBUG)
