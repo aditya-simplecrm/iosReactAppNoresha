@@ -17,6 +17,9 @@ import Meetings from './components/meetings';
 import Tasks from './components/tasks';
 import LeadsDetailView from './components/leads/detailView.js';
 import LeadsEditView from './components/leads/editView.js';
+import LeadsInlineedit from './components/leads/inlineedit.js';
+import CallsDetailView from './components/calls/detailView.js';
+
 import { statusBarColor } from './themes/base-theme';
 
 
@@ -71,6 +74,10 @@ class AppNavigator extends Component {
         return <LeadsDetailView />;
       case 'leadsEditView':
         return <LeadsEditView />;
+    case 'callsdetailview':
+        return <CallsDetailView />; 
+    case 'leadsinlinedit':
+        return <LeadsInlineedit />;
       default :
         return <Login />;
     }
@@ -120,6 +127,8 @@ class AppNavigator extends Component {
             <Scene key="tasksedit" component={Tasks} />
              <Scene key="leadsDetailView" component={LeadsDetailView} />
             <Scene key="leadsEditView" component={LeadsEditView} />
+            <Scene key="callsdetailview" component={CallsDetailView} />
+            <Scene key="leadsinlinedit" component={LeadsInlineedit} />
           </Scene>
         </RouterWithRedux>
       </Drawer>

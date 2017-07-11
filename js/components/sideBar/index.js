@@ -24,7 +24,10 @@ class SideBar extends Component {
   navigateTo(route) {
     this.props.navigateTo(route, 'home');
   }
-
+_userLogout = () => {
+      AsyncStorage.removeItem('username');
+      Actions.login();
+  }
   render() {
     return (
       <Content style={styles.sidebar} >
@@ -38,7 +41,7 @@ class SideBar extends Component {
         <Image source={leads} style={styles.leads}></Image>
           <Text style={{marginLeft: 8,fontSize:15}}>Leads</Text>
         </ListItem>
-         <ListItem button onPress={() => { Actions.blankPage(); this.props.closeDrawer(); }} >
+         <ListItem button onPress={() => {this._userLogout(); this.props.closeDrawer(); }} >
          <Image source={logout} style={styles.logout}></Image>
           <Text style={{marginLeft: 8,fontSize:15}}>Sign Out</Text>
         </ListItem>

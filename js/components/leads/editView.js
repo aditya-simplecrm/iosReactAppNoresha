@@ -122,7 +122,7 @@ class LeadsEditView extends Component {
           this.setState({email_error: true});
 
           Alert.alert('Email is invalid');            
-        }
+      1  }
 
       }      
 
@@ -148,7 +148,7 @@ class LeadsEditView extends Component {
                                         category: this.state.category,
                                         enquiry_source: this.state.enquiry,
                                         customer_type: this.state.customer,
-                                        office_contact_number: office_contact_number,
+                                        office_contact_number: this.state.office_contact_number,
                                         company_name: this.state.company_name
                                       }
                 );

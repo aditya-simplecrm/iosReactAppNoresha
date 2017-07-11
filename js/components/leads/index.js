@@ -46,10 +46,10 @@ class Leads extends Component {
               <Body>
                 <Text>{result.first_name} {result.last_name}</Text>
                 <Text>
-                  email@email.com
+                  {result.email}
                 </Text>
                 <Text>
-                  8862001428
+                  {result.contact_number}
                 </Text>                
               </Body>
             </CardItem>
@@ -58,7 +58,19 @@ class Leads extends Component {
     return (
       <Container style={styles.container}>
 
-        <AppHeader title="Leads" />
+         <Header>
+                    <Left>
+                        <Button transparent onPress={this.props.openDrawer}>
+                          <Icon active name="menu" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <Title>Leads</Title>
+                    </Body>
+                    <Right>
+
+                    </Right>
+                </Header>
         <Content padder>
 
 

@@ -36,17 +36,33 @@ Leads.schema = {
         state: 'string',
         postal_code: 'string',
         country: 'string',
-        contact_number: 'int',
+        contact_number: 'string',
         email: 'string',
         status: 'string',
         category: 'string',
         enquiry_source: 'string',
         customer_type: 'string',
-        office_contact_number: 'int',
+        office_contact_number: 'string',
         company_name: 'string',
         creationDate: 'date'
 
     },
 };
+class Calls extends Realm.Object {}
+Calls.schema = {
+  name: 'calls',
+    primaryKey: 'id',
+    properties: {
+        id: 'int',
+        deleted: {type: 'bool', default: false},
+        topic: 'string',
+       reminders: 'string',
+        status: 'string',
+        duration: 'string',
+       creationDate: 'date',
+       startDate: 'date',
 
-export default new Realm({schema: [Leads]});
+    },
+};
+
+export default new Realm({schema: [Leads,Calls]});

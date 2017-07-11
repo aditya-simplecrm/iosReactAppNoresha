@@ -36,4 +36,8 @@ export default {
     height: 15,
    
      },
+      header1:{
+    height:5,
+    marginTop:-10,
+  }
 };
