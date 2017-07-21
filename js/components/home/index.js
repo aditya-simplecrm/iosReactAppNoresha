@@ -16,7 +16,7 @@ import ActionButton from 'react-native-action-button';
 import realm from '../leads/realm';
 import Calendar from 'react-native-calendar';
 import { BlurView } from 'react-native-blur';
-import PieChart from 'react-native-pie-chart';
+
 const call = require('../../../images/call.png');
 const meeting = require('../../../images/meeting.png');
 const task = require('../../../images/task.png');
