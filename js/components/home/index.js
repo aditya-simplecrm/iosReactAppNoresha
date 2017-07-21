@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity,LayoutAnimation,ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right, List, ListItem,Thumbnail,Footer,Fab,View,Tabs,Tab,Form, Item,Card,CardItem} from 'native-base';
@@ -15,6 +15,8 @@ import { Image, AsyncStorage } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import realm from '../leads/realm';
 import Calendar from 'react-native-calendar';
+import { BlurView } from 'react-native-blur';
+import PieChart from 'react-native-pie-chart';
 const call = require('../../../images/call.png');
 const meeting = require('../../../images/meeting.png');
 const task = require('../../../images/task.png');
@@ -32,11 +34,46 @@ class Home extends Component {
     Actions.blankPage();
   };
 
+  state = {
+  isActionButtonVisible: true
+}
+
+
+// 2. Define a variable that will keep track of the current scroll position
+_listViewOffset = 0
+
+
+
+// 3. Add some logic in the scroll listener for hiding the action button when scrolling down
+_onScroll = (event) => {
+  //Alert.alert('test');
+  // Simple fade-in / fade-out animation
+  const CustomLayoutLinear = {
+    duration: 100,
+    create: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity },
+    update: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity },
+    delete: { type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity }
+  }
+  // Check if the user is scrolling up or down by confronting the new scroll position with your own one
+  const currentOffset = event.nativeEvent.contentOffset.y
+  const direction = (currentOffset > 0 && currentOffset > this._listViewOffset)
+    ? 'down'
+    : 'up'
+  // If the user is scrolling down (and the action-button is still visible) hide it
+  const isActionButtonVisible = direction === 'up'
+  if (isActionButtonVisible !== this.state.isActionButtonVisible) {
+    LayoutAnimation.configureNext(CustomLayoutLinear)
+    this.setState({ isActionButtonVisible })
+  }
+  // Update your scroll position
+  this._listViewOffset = currentOffset
+}
   render() {
+
       var data = realm.objects('calls');
       console.log(data);
       var listItem = data.map((result) => 
-                    <Card >  
+                    <Card>  
 
                      <CardItem>
                    <Body>
@@ -48,31 +85,52 @@ class Home extends Component {
             </CardItem>
          </Card>
     );
-                  
+          
     return (
       <Container style={styles.container}>
-        <Header>
+
+        <Header style={styles.headerbackground}>
                     <Left>
                         <Button transparent onPress={this.props.openDrawer}>
-                          <Icon active name="menu" />
+                          <Icon style={styles.iconcss} active name="menu" />
                         </Button>
                     </Left>
                     <Body>
-                        <Title>SimpleCRM</Title>
+                        <Title style={styles.titlecss}>SimpleCRM</Title>
                     </Body>
                     <Right>
 
                     </Right>
                 </Header>
-
+     
 
         <Content>
            <Header hasTabs style={styles.header1}/>
               <Tabs initialPage={0}>
-                <Tab heading="Calender">
+                <Tab heading="Calendar">
                 <Tabs initialPage={0}>
                     <Tab heading="Daily">
+                   <View>
+                   
                    {listItem}
+                   
+  
+  {this.state.isActionButtonVisible ?  <ActionButton buttonColor="#01579B" backdrop={<BlurView
+          
+          blurType="dark"
+          blurAmount={100}
+        />}>
+          <ActionButton.Item buttonColor='#EC5192' style={styles.actionbutton} title="Create Call" onPress={() => Actions.callsedit()}>
+          <Image source={call} style={styles.callsstye} ></Image>
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#ff0000' title="Create Meeting" onPress={() => Actions.meetingsedit()}>
+            <Image source={meeting} style={styles.meetings} ></Image>
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#4AA091' title="Create Task" onPress={() => Actions.tasksedit()}>
+             <Image source={task} style={styles.tasks} ></Image>
+          </ActionButton.Item>
+        </ActionButton> : null}
+</View> 
                     </Tab>
                     <Tab heading="Monthly">
                     <Calendar
@@ -112,22 +170,8 @@ class Home extends Component {
               </Tabs>       
 
         </Content>
-        <Footer>
-         <View style={{flex:1}}>
-        {/* Rest of the app comes ABOVE the action button component !*/}
-        <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#EC5192' style={styles.actionbutton} title="Create Call" onPress={() => Actions.callsedit()}>
-          <Image source={call} style={styles.callsstye} ></Image>
-          </ActionButton.Item>
-          <ActionButton.Item buttonColor='#ff0000' title="Create Meeting" onPress={() => Actions.meetingsedit()}>
-            <Image source={meeting} style={styles.meetings} ></Image>
-          </ActionButton.Item>
-          <ActionButton.Item buttonColor='#4AA091' title="Create Task" onPress={() => Actions.tasksedit()}>
-             <Image source={task} style={styles.tasks} ></Image>
-          </ActionButton.Item>
-        </ActionButton>
-      </View>
-      </Footer>
+
+    
       </Container>
     );
   }

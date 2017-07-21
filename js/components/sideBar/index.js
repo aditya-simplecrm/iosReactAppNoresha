@@ -13,6 +13,7 @@ const background = require('../../../images/placeholder.png');
 const home = require('../../../images/simplehome.png');
 const leads = require('../../../images/simpleleads.png');
 const logout = require('../../../images/simplelogout.png');
+const location = require('../../../images/simplelocation.png');
 class SideBar extends Component {
 
   static propTypes = {
@@ -41,7 +42,11 @@ _userLogout = () => {
         <Image source={leads} style={styles.leads}></Image>
           <Text style={{marginLeft: 8,fontSize:15}}>Leads</Text>
         </ListItem>
-         <ListItem button onPress={() => {this._userLogout(); this.props.closeDrawer(); }} >
+         <ListItem button onPress={() => {Actions.location(); this.props.closeDrawer(); }} >
+         <Image source={location} style={styles.location}></Image>
+          <Text style={{marginLeft: 8,fontSize:15}}>Location</Text>
+        </ListItem>
+        <ListItem button onPress={() => {this._userLogout(); this.props.closeDrawer(); }} >
          <Image source={logout} style={styles.logout}></Image>
           <Text style={{marginLeft: 8,fontSize:15}}>Sign Out</Text>
         </ListItem>

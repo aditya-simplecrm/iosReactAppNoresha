@@ -3,6 +3,8 @@ package com.nativestarterkit;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import io.realm.react.RealmReactPackage;
@@ -33,6 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new MapsPackage(),
+            new BlurViewPackage(),
             new ImagePickerPackage(),
             new SplashScreenReactPackage(),
             new RealmReactPackage(),

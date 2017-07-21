@@ -42,10 +42,17 @@ export default {
   	padding:15,
   	 },
  logout:{
-  	backgroundColor: '#EC5152',
+    backgroundColor: '#EC5152',
+    width:10,
+    height: 10,
+    borderRadius:5,
+    padding:15,
+     },
+    location:{
+  	backgroundColor: '#ff0000',
   	width:10,
   	height: 10,
   	borderRadius:5,
   	padding:15,
-  	 }
+  	 },
 };

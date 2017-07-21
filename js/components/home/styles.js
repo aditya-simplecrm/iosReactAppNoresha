@@ -39,5 +39,14 @@ export default {
       header1:{
     height:5,
     marginTop:-10,
-  }
+  },
+  headerbackground:{
+    backgroundColor: '#01579B',
+  },
+  titlecss:{
+    color: 'white',
+  },
+  iconcss:{
+    color: 'white',
+  },
 };
