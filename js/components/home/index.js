@@ -16,6 +16,8 @@ import ActionButton from 'react-native-action-button';
 import realm from '../leads/realm';
 import Calendar from 'react-native-calendar';
 import { BlurView } from 'react-native-blur';
+import Contacts from 'react-native-contacts';
+
 
 const call = require('../../../images/call.png');
 const meeting = require('../../../images/meeting.png');
